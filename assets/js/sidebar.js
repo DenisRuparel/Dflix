@@ -11,14 +11,17 @@ export function sidebar() {
             genreList[id] = name;
         }
 
-        genreLink();
+        // Check if genre links have already been appended to avoid duplication
+        if (!document.querySelector(".genre-links-appended")) {
+            genreLink();
+        }
     });
 
     const sidebarInner = document.createElement("div");
     sidebarInner.classList.add("sidebar-inner");
 
     sidebarInner.innerHTML = `
-        <div class="sidebar-list">
+        <div class="sidebar-list genre-list">
             <p class="title">Genre</p>
         </div>
 
@@ -43,24 +46,24 @@ export function sidebar() {
         `;
 
     const genreLink = function () {
-
         for(const [genreId, genreName] of Object.entries(genreList)){
-            
             const link = document.createElement("a");
             link.classList.add("sidebar-link");
             link.setAttribute("href", "./movie-list.html");
             link.setAttribute("menu-close", "");
-
             link.setAttribute("onclick", `getMovieList("with_genres=${genreId}", "${genreName}")`);
-            
             link.textContent = genreName;
-            sidebarInner.querySelectorAll(".sidebar-list")[0].appendChild(link);
+            sidebarInner.querySelector(".genre-list").appendChild(link);
         }
         
-        const sidebar = document.querySelector("[sidebar]");
+        // Mark that genre links have been appended
+        const genreListElement = sidebarInner.querySelector(".genre-list");
+        genreListElement.classList.add("genre-links-appended");
+        
+        const sidebar = document.querySelector(".sidebar");
         sidebar.appendChild(sidebarInner);
         toggleSidebar(sidebar);
-    }
+    };
 
     const toggleSidebar = function(sidebar){
         /**
@@ -68,7 +71,7 @@ export function sidebar() {
          */
 
         const sidebarBtn = document.querySelector("[menu-btn]");
-        const sidebarTogglers = document.querySelectorAll("[menu-toggler");
+        const sidebarTogglers = document.querySelectorAll("[menu-toggler]");
         const sidebarClose = document.querySelectorAll("[menu-close]");
         const overlay = document.querySelector("[overlay]");
 
@@ -83,5 +86,5 @@ export function sidebar() {
             sidebarBtn.classList.remove("active");
             overlay.classList.remove("active");
         });
-    }
+    };
 }
