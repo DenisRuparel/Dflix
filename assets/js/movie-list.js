@@ -27,28 +27,7 @@ fetchDataFromServer(`https://api.themoviedb.org/3/discover/movie?api_key=${api_k
                 <h1 class="heading">All ${genreName} Movies</h1>
             </div>
 
-            <div class="grid-list">
-                <div class="movie-card">
-                    <figure class="poster-box card-banner">
-                        <img src="https://starsunfolded.com/wp-content/uploads/2020/06/Ramayan.jpg" alt="Ramayan"
-                            class="img-cover-control"/>
-                    </figure>
-
-                    <h4 class="title">Ramayan</h4>
-
-                    <div class="meta-list">
-                        <div class="meta-item">
-                            <img src="./assets/images/star.png" width="20" height="20" loading="lazy" alt="rating"/>
-
-                            <spn class="span">8.4</spn>
-                        </div>
-
-                        <div class="card-badge">2022</div>
-                    </div>
-
-                    <a href="./detail.html" class="card-btn" title="Ramayan"></a>
-                </div>
-            </div>
+            <div class="grid-list"></div>
 
             <button class="btn load-more" load-more>Load More</button>
         

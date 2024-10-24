@@ -20,6 +20,8 @@ export function sidebar() {
     const sidebarInner = document.createElement("div");
     sidebarInner.classList.add("sidebar-inner");
 
+    const year = new Date().getFullYear();
+
     sidebarInner.innerHTML = `
         <div class="sidebar-list genre-list">
             <p class="title">Genre</p>
@@ -36,12 +38,10 @@ export function sidebar() {
 
         <div class="sidebar-footer">
             <p class="copyright">
-                Copyright 2023 &copy; by<a href="https://github.com/DenisRuparel">Denis Ruparel</a>
+                Copyright &copy; ${year} by<br>
+                <a href="https://github.com/DenisRuparel">Denis Ruparel</a><br>
                 All Rights Reserved
             </p>
-
-            <img src="./assets/images/tmdb-logo.svg" width="130"
-                height="17" alt="the movie database logo"/>
         </div>
         `;
 
